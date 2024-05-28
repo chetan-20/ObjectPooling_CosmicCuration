@@ -27,9 +27,9 @@ namespace CosmicCuration.Enemy
 
         public void Configure(Vector3 positionToSet, EnemyOrientation enemyOrientation)
         {
+            enemyView.gameObject.SetActive(true);
             enemyView.transform.position = positionToSet;
-            SetEnemyOrientation(enemyOrientation);
-            
+            SetEnemyOrientation(enemyOrientation);           
             currentEnemyState = EnemyState.Moving;
             currentHealth = enemyData.maxHealth;
             speed = Random.Range(enemyData.minimumSpeed, enemyData.maximumSpeed);
@@ -106,7 +106,9 @@ namespace CosmicCuration.Enemy
             GameService.Instance.GetUIService().IncrementScore(enemyData.scoreToGrant);
             GameService.Instance.GetSoundService().PlaySoundEffects(SoundType.EnemyDeath);
             GameService.Instance.GetVFXService().PlayVFXAtPosition(VFXType.EnemyExplosion, enemyView.transform.position);
-            Object.Destroy(enemyView.gameObject);
+            enemyView.gameObject.SetActive(false);
+            GameService.Instance.GetEnemyService().ReturnEnemyToPool(this);
+            //Object.Destroy(enemyView.gameObject);           
         }
 
         private enum EnemyState

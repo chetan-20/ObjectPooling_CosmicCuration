@@ -9,6 +9,7 @@ namespace CosmicCuration.Enemy
         #region Dependencies
         private EnemyView enemyPrefab;
         private EnemyScriptableObject enemyScriptableObject;
+        private EnemyPool enemyPool;
         #endregion
 
         #region Variables
@@ -30,6 +31,7 @@ namespace CosmicCuration.Enemy
             isSpawning = true;
             currentSpawnRate = enemyScriptableObject.initialSpawnRate;
             spawnTimer = currentSpawnRate;
+            enemyPool = new EnemyPool(enemyPrefab,enemyScriptableObject);
         } 
         #endregion
 
@@ -59,10 +61,12 @@ namespace CosmicCuration.Enemy
 
         private void SpawnEnemyAtPosition(Vector2 spawnPosition, EnemyOrientation enemyOrientation)
         {
-            EnemyController spawnedEnemy = new EnemyController(enemyPrefab, enemyScriptableObject.enemyData);
+            //EnemyController spawnedEnemy = new EnemyController(enemyPrefab, enemyScriptableObject.enemyData);
+            EnemyController spawnedEnemy = enemyPool.GetEnemy();
             spawnedEnemy.Configure(spawnPosition, enemyOrientation);
         }
-
+        public void ReturnEnemyToPool(EnemyController returnedEnemy)=>enemyPool.ReturnEnemyToPool(returnedEnemy);
+        
         private Vector2 CalculateSpawnPosition(EnemyOrientation enemyOrientation)
         {
             // Calculate a random spawn position outside the visible screen
