@@ -1,20 +1,21 @@
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 namespace CosmicCuration.Bullets
 {
-    public class BulletPool
+    public class BulletPool : GenericObjectPool<BulletController>
     {
         private BulletView bulletPrefab;
-        private BulletScriptableObject bulletSO;
-        private List<PooledBullet> pooledBullets = new List<PooledBullet>();
-
+        private BulletScriptableObject bulletSO;       
         public BulletPool(BulletView bulletPrefab, BulletScriptableObject bulletSO)
         {
             this.bulletPrefab = bulletPrefab;
             this.bulletSO = bulletSO;
         }
-
-        public BulletController GetBullet()
+        public BulletController GetBullet() => GetItem();
+        protected override BulletController CreateItemT() => new BulletController(bulletPrefab, bulletSO);
+       
+        /*public BulletController GetBullet()
         {
             if (pooledBullets.Count > 0)
             {
@@ -49,6 +50,6 @@ namespace CosmicCuration.Bullets
         {
             public BulletController Bullet;
             public bool isUsed;
-        }
+        }*/
     }
 }
