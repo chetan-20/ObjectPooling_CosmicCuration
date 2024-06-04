@@ -135,7 +135,7 @@ namespace CosmicCuration.Player
             GameService.Instance.GetPowerUpService().SetPowerUpSpawning(false);
             
             // Wait for Player Ship Destruction.
-            await Task.Delay(playerScriptableObject.deathDelay * 1000);
+            await Task.Delay(playerScriptableObject.deathDelay * 1000);           
             GameService.Instance.GetUIService().EnableGameOverUI();
         }
 

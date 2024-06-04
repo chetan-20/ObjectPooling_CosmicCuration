@@ -4930,7 +4930,7 @@ GameObject:
   - component: {fileID: 2836261358433982232}
   - component: {fileID: 2705997964611865120}
   - component: {fileID: 2705276863179314272}
-  - component: {fileID: 1384023486567675888}
+  - component: {fileID: -2226672585082593349}
   m_Layer: 0
   m_Name: EnemyDestroyVFX
   m_TagString: Untagged
@@ -9841,7 +9841,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1384023486567675888
+--- !u!114 &-2226672585082593349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9853,7 +9853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2590e3f5e792cb4fba863a1bf28940a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: []
+  particle:
+  - type: 1
+    particleSystem: {fileID: 2705997964611865120}
 --- !u!1 &2831423904803400220
 GameObject:
   m_ObjectHideFlags: 0

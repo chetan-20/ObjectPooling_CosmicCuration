@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4796687881362112097}
   - component: {fileID: 4630746191812930549}
   - component: {fileID: 4631240662768828841}
-  - component: {fileID: 2223264487581005701}
+  - component: {fileID: 8178096918796649740}
   m_Layer: 0
   m_Name: BulletHitVFX
   m_TagString: Untagged
@@ -4901,7 +4901,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2223264487581005701
+--- !u!114 &8178096918796649740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4913,4 +4913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2590e3f5e792cb4fba863a1bf28940a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: []
+  particle:
+  - type: 2
+    particleSystem: {fileID: 4630746191812930549}

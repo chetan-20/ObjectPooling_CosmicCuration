@@ -48,7 +48,7 @@ namespace CosmicCuration.VFX
 
 
     [Serializable]
-    public class VFXData
+    public struct VFXData
     {
         public VFXType type;
         public ParticleSystem particleSystem;
